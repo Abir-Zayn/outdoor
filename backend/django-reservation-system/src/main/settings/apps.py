@@ -20,6 +20,7 @@ THIRD_PARTY_APPS = [
     "rest_framework.authtoken",
     "django_rest_passwordreset",
     "drf_spectacular",
+    "mcp_server"
 ]
 
 LOCAL_APPS = ["base", "account", "customer", "room", "booking", "payment"]

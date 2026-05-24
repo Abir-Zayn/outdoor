@@ -17,4 +17,5 @@ urlpatterns = [
     path(
         "swagger/", SpectacularSwaggerView.as_view(url_name="schema"), name="swagger-ui"
     ),
+    path("", include("mcp_server.urls")),
 ]

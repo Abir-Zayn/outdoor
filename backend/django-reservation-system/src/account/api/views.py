@@ -4,11 +4,20 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.authtoken.models import Token
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
+from drf_spectacular.utils import extend_schema
 
 from account.models import Account
-from account.api.serializers import RegistrationSerializer, ChangePasswordSerializer
+from account.api.serializers import (
+    RegistrationSerializer,
+    ChangePasswordSerializer,
+    RegistrationResponseSerializer,
+)
 
 
+@extend_schema(
+    request=RegistrationSerializer,
+    responses={200: RegistrationResponseSerializer, 400: RegistrationSerializer},
+)
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def registration_view(request):

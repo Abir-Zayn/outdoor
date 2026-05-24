@@ -35,3 +35,11 @@ class ChangePasswordSerializer(serializers.Serializer):
     model = Account
     old_password = serializers.CharField(required=True)
     new_password = serializers.CharField(required=True)
+
+
+class RegistrationResponseSerializer(serializers.Serializer):
+    response = serializers.CharField()
+    email = serializers.EmailField()
+    first_name = serializers.CharField()
+    last_name = serializers.CharField()
+    token = serializers.CharField()
