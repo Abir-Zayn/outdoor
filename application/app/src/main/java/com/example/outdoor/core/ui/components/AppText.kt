@@ -13,6 +13,22 @@ import com.example.outdoor.ui.theme.OutdoorOrange
 object AppText {
 
     @Composable
+    fun Headline(
+        text: String,
+        modifier: Modifier = Modifier,
+        color: Color = OutdoorBlack,
+        textAlign: TextAlign? = null
+    ) {
+        Text(
+            text = text,
+            modifier = modifier,
+            color = color,
+            style = AppTextStyle.HeadlineLarge,
+            textAlign = textAlign
+        )
+    }
+
+    @Composable
     fun Body(
         text: String,
         modifier: Modifier = Modifier,

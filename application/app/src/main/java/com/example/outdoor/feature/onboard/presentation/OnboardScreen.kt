@@ -40,17 +40,17 @@ fun OnboardScreen(
         HeroImage(
             modifier = Modifier
                 .fillMaxWidth()
-                .weight(0.40f)
+                .weight(0.52f)
                 .background(Color(0xFFE6E6E6))
         )
 
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .weight(0.60f)
-                .padding(horizontal = 24.dp, vertical = 28.dp),
+                .weight(0.48f)
+                .padding(horizontal = 24.dp, vertical = 20.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(20.dp)
+            verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             // Mixed-color headline — AnnotatedString required, kept inline
             Text(
