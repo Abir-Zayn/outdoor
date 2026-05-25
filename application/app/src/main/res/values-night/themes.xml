@@ -1,0 +1,12 @@
+<resources>
+    <style name="Theme.Outdoor" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:statusBarColor">@color/outdoor_blue</item>
+        <item name="android:windowBackground">@color/outdoor_near_white</item>
+    </style>
+
+    <style name="Theme.Outdoor.Splash" parent="Theme.Outdoor">
+        <item name="android:windowBackground">@color/outdoor_blue</item>
+        <item name="android:statusBarColor">@color/outdoor_blue</item>
+        <item name="android:navigationBarColor">@color/outdoor_blue</item>
+    </style>
+</resources>
