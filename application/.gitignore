@@ -28,3 +28,12 @@ app/build/
 
 # OS
 Thumbs.db
+
+# Graphify output (generated - do not commit)
+graphify-out/*
+!graphify-out/.gitkeep
+
+# Graphify temp / working files
+.graphify_*.json
+.graphify_*.txt
+.graphify_python

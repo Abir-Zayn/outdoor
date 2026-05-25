@@ -1,0 +1,47 @@
+# ── Build outputs ────────────────────────────────────────────────────────────
+build/
+app/build/
+*.class
+*.dex
+*.apk
+*.aar
+
+# ── Binary / media assets ────────────────────────────────────────────────────
+*.webp
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.ttf
+*.otf
+*.woff
+*.woff2
+
+# ── Compiled JVM / Kotlin artifacts ─────────────────────────────────────────
+*.jar
+*.kotlin_module
+*.bin
+
+# ── Android / Gradle tooling ─────────────────────────────────────────────────
+.gradle/
+gradle/wrapper/
+gradle-wrapper.jar
+local.properties
+*.iml
+*.jks
+*.keystore
+
+# ── IDE metadata ─────────────────────────────────────────────────────────────
+.idea/
+.claude/
+
+# ── OS noise ─────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ── Graphify own temp / output (don't re-process the graph itself) ───────────
+graphify-out/
+.graphify_*.json
+.graphify_*.txt
+.graphify_python

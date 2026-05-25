@@ -3,6 +3,7 @@ package com.example.outdoor.ui.theme
 import androidx.compose.ui.graphics.Color
 
 val OutdoorBlue = Color(0xFF0759FF)
+val OutdoorOrange = Color(0xFFFF6633)
 val OutdoorGold = Color(0xFFE4AF16)
 val OutdoorBlack = Color(0xFF010101)
 val OutdoorGray = Color(0xFF797979)

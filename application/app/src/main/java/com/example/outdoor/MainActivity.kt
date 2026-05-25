@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
+import com.example.outdoor.feature.onboard.presentation.OnboardScreen
 import com.example.outdoor.ui.theme.OutdoorNearWhite
 import com.example.outdoor.ui.theme.OutdoorTheme
 
@@ -19,7 +20,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = OutdoorNearWhite
                 ) {
-                    // Home screen content goes here
+                    OnboardScreen()
                 }
             }
         }
