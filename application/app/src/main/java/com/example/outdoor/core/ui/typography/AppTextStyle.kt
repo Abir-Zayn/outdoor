@@ -38,4 +38,16 @@ object AppTextStyle {
         fontWeight = FontWeight.SemiBold,
         fontSize = 16.sp
     )
+    val SubHeadline = TextStyle(
+        fontFamily = IBMPlexSerif,
+        fontWeight = FontWeight.Bold,
+        fontSize = 20.sp,
+        lineHeight = 28.sp
+    )
+    val CardTitle = TextStyle(
+        fontFamily = IBMPlexSerif,
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 16.sp,
+        lineHeight = 22.sp
+    )
 }

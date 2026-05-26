@@ -99,4 +99,32 @@ object AppText {
             style = AppTextStyle.ButtonLabel
         )
     }
+
+    @Composable
+    fun SubHeadline(
+        text: String,
+        modifier: Modifier = Modifier,
+        color: Color = OutdoorBlack
+    ) {
+        Text(
+            text = text,
+            modifier = modifier,
+            color = color,
+            style = AppTextStyle.SubHeadline
+        )
+    }
+
+    @Composable
+    fun CardTitle(
+        text: String,
+        modifier: Modifier = Modifier,
+        color: Color = OutdoorBlack
+    ) {
+        Text(
+            text = text,
+            modifier = modifier,
+            color = color,
+            style = AppTextStyle.CardTitle
+        )
+    }
 }

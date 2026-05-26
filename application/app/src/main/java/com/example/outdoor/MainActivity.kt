@@ -12,8 +12,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import com.example.outdoor.feature.onboard.presentation.OnboardScreen
 import com.example.outdoor.feature.onboard.presentation.OnboardSecondScreen
+import com.example.outdoor.feature.auth.presentation.ForgetPasswordScreen
 import com.example.outdoor.feature.auth.presentation.LoginScreen
 import com.example.outdoor.feature.auth.presentation.RegisterScreen
+import com.example.outdoor.feature.home.presentation.HomeScreen
 import com.example.outdoor.ui.theme.OutdoorNearWhite
 import com.example.outdoor.ui.theme.OutdoorTheme
 
@@ -40,16 +42,21 @@ class MainActivity : ComponentActivity() {
                             onSkip = { currentScreen = 2 }
                         )
                         2 -> LoginScreen(
-                            onLoginSuccess = { currentScreen = 0 },
-                            onForgotPasswordClick = { /* Handle forgot password */ },
+                            onLoginSuccess = { currentScreen = 5 },
+                            onForgotPasswordClick = { currentScreen = 4 },
                             onSignUpClick = { currentScreen = 3 },
                             onSocialLoginClick = { /* Handle social login */ }
                         )
                         3 -> RegisterScreen(
-                            onRegisterSuccess = { currentScreen = 2 },
+                            onRegisterSuccess = { currentScreen = 5 },
                             onSignInClick = { currentScreen = 2 },
                             onSocialSignUpClick = { /* Handle social sign-up */ }
                         )
+                        4 -> ForgetPasswordScreen(
+                            onSendResetLink = { /* Handle reset link send */ },
+                            onBackToLoginClick = { currentScreen = 2 }
+                        )
+                        5 -> HomeScreen()
                     }
                 }
             }
