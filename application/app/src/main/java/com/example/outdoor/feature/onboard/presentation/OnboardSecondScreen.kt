@@ -21,12 +21,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.outdoor.core.ui.components.AppText
 import com.example.outdoor.core.ui.typography.AppTextStyle
 import com.example.outdoor.feature.onboard.presentation.components.OnboardNavigation
@@ -48,6 +50,8 @@ fun OnboardSecondScreen(
             .background(OutdoorNearWhite)
     ) {
         val isTabletOrLandscape = maxWidth > 600.dp
+        val headingLineHeight = 36.sp
+        val bodyToActionGap = (40f * LocalDensity.current.fontScale).dp
 
         if (isTabletOrLandscape) {
             // Tablet & Landscape Adaptive Two-Pane Layout
@@ -91,17 +95,18 @@ fun OnboardSecondScreen(
                                     append("Hotels\nThrough Interactive Map")
                                 }
                             },
+                            style = AppTextStyle.HeadlineLarge.copy(lineHeight = headingLineHeight),
                             textAlign = TextAlign.Center
                         )
 
-                        Spacer(modifier = Modifier.height(24.dp))
+                        Spacer(modifier = Modifier.height(14.dp))
 
                         AppText.Body(
                             text = "Find top-rated hotels near you using an interactive map for easy browsing.",
                             textAlign = TextAlign.Center
                         )
 
-                        Spacer(modifier = Modifier.height(32.dp))
+                        Spacer(modifier = Modifier.height(bodyToActionGap))
 
                         OnboardNavigation(
                             currentPage = 1,
@@ -145,6 +150,8 @@ fun OnboardSecondScreen(
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.spacedBy(16.dp)
                     ) {
+                        Spacer(modifier = Modifier.height(20.dp))
+
                         Text(
                             text = buildAnnotatedString {
                                 withStyle(
@@ -161,15 +168,18 @@ fun OnboardSecondScreen(
                                     append("Hotels\nThrough Interactive Map")
                                 }
                             },
+                            style = AppTextStyle.HeadlineLarge.copy(lineHeight = headingLineHeight),
                             textAlign = TextAlign.Center
                         )
+
+                        Spacer(modifier = Modifier.height(12.dp))
 
                         AppText.Body(
                             text = "Find top-rated hotels near you using an interactive map for easy browsing.",
                             textAlign = TextAlign.Center
                         )
 
-                        Spacer(modifier = Modifier.height(12.dp))
+                        Spacer(modifier = Modifier.height(bodyToActionGap))
 
                         OnboardNavigation(
                             currentPage = 1,

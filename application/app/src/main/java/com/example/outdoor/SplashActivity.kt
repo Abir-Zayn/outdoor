@@ -7,6 +7,8 @@ import androidx.activity.compose.setContent
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.slideInHorizontally
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -18,6 +20,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -53,33 +56,58 @@ class SplashActivity : ComponentActivity() {
 
 @Composable
 fun SplashScreen(onTimeout: () -> Unit) {
-    var visible by remember { mutableStateOf(false) }
+    val brandText = "Outdoor."
+    var visibleChars by remember { mutableIntStateOf(0) }
+    var showLogo by remember { mutableStateOf(false) }
 
     LaunchedEffect(Unit) {
-        visible = true
-        delay(2500)
+        val totalAnimationMillis = 1200L
+        val logoAnimationMillis = 300L
+        val perCharDelay = (totalAnimationMillis - logoAnimationMillis) / brandText.length
+
+        repeat(brandText.length) { index ->
+            delay(perCharDelay)
+            visibleChars = index + 1
+        }
+
+        showLogo = true
+        delay(logoAnimationMillis)
         onTimeout()
     }
 
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(OutdoorBlue.copy(alpha = 0.6f)),
+            .background(Color.White),
         contentAlignment = Alignment.Center
     ) {
-        AnimatedVisibility(
-            visible = visible,
-            enter = fadeIn(animationSpec = tween(durationMillis = 700, delayMillis = 200))
-        ) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Text(
-                    text = "Outdoor.",
-                    color = Color.White,
-                    fontSize = 34.sp,
-                    fontWeight = FontWeight.Medium,
-                    fontFamily = IBMPlexSerif,
-                    letterSpacing = 0.02.sp
-                )
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Row {
+                brandText.forEachIndexed { index, char ->
+                    AnimatedVisibility(
+                        visible = index < visibleChars,
+                        enter = slideInHorizontally(
+                            animationSpec = tween(durationMillis = 220),
+                            initialOffsetX = { -it / 2 }
+                        ) + fadeIn(animationSpec = tween(durationMillis = 220))
+                    ) {
+                        Text(
+                            text = char.toString(),
+                            color = OutdoorBlue,
+                            fontSize = 34.sp,
+                            fontWeight = FontWeight.Medium,
+                            fontFamily = IBMPlexSerif,
+                            letterSpacing = 0.02.sp
+                        )
+                    }
+                }
+            }
+
+            AnimatedVisibility(
+                visible = showLogo,
+                enter = fadeIn(animationSpec = tween(durationMillis = 300)) +
+                    scaleIn(animationSpec = tween(durationMillis = 300), initialScale = 0.85f)
+            ) {
                 Spacer(modifier = Modifier.width(10.dp))
                 // SVG logo loaded from assets/app_logo.svg via androidsvg wrapped in AndroidView
                 AndroidView(
@@ -89,7 +117,7 @@ fun SplashScreen(onTimeout: () -> Unit) {
                         }
                     },
                     modifier = Modifier.size(44.dp)
-                )
+                )                
             }
         }
     }

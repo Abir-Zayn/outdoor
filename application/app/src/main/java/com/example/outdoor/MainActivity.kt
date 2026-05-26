@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import com.example.outdoor.feature.onboard.presentation.OnboardScreen
 import com.example.outdoor.feature.onboard.presentation.OnboardSecondScreen
 import com.example.outdoor.feature.auth.presentation.LoginScreen
+import com.example.outdoor.feature.auth.presentation.RegisterScreen
 import com.example.outdoor.ui.theme.OutdoorNearWhite
 import com.example.outdoor.ui.theme.OutdoorTheme
 
@@ -41,8 +42,13 @@ class MainActivity : ComponentActivity() {
                         2 -> LoginScreen(
                             onLoginSuccess = { currentScreen = 0 },
                             onForgotPasswordClick = { /* Handle forgot password */ },
-                            onSignUpClick = { /* Handle sign up redirection */ },
+                            onSignUpClick = { currentScreen = 3 },
                             onSocialLoginClick = { /* Handle social login */ }
+                        )
+                        3 -> RegisterScreen(
+                            onRegisterSuccess = { currentScreen = 2 },
+                            onSignInClick = { currentScreen = 2 },
+                            onSocialSignUpClick = { /* Handle social sign-up */ }
                         )
                     }
                 }
