@@ -25,6 +25,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.outdoor.core.ui.components.AppText
 import com.example.outdoor.feature.home.presentation.components.AppTopBar
@@ -48,8 +49,10 @@ private val trendingHotels = listOf(
 
 @Composable
 fun HomeScreen(
+    navBarPadding: Dp = 0.dp,
     onNotificationClick: () -> Unit = {},
-    onFindClick: (destination: String, dates: String, guests: String) -> Unit = { _, _, _ -> }
+    onFindClick: (destination: String, dates: String, guests: String) -> Unit = { _, _, _ -> },
+    onHotelClick: (Hotel) -> Unit = {}
 ) {
     var destination by remember { mutableStateOf("") }
     var dates by remember { mutableStateOf("") }
@@ -100,7 +103,7 @@ fun HomeScreen(
             modifier = Modifier
                 .fillMaxWidth()
                 .background(Color.White)
-                .padding(top = 24.dp, bottom = 32.dp),
+                .padding(top = 24.dp, bottom = 32.dp + navBarPadding),
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             // Most Popular
@@ -114,7 +117,10 @@ fun HomeScreen(
                 horizontalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 items(mostPopularHotels) { hotel ->
-                    HotelCard(hotel = hotel)
+                    HotelCard(
+                        hotel = hotel,
+                        onClick = onHotelClick
+                    )
                 }
             }
 
@@ -131,7 +137,10 @@ fun HomeScreen(
                 horizontalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 items(trendingHotels) { hotel ->
-                    HotelCard(hotel = hotel)
+                    HotelCard(
+                        hotel = hotel,
+                        onClick = onHotelClick
+                    )
                 }
             }
         }

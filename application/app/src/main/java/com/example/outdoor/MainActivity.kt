@@ -15,7 +15,7 @@ import com.example.outdoor.feature.onboard.presentation.OnboardSecondScreen
 import com.example.outdoor.feature.auth.presentation.ForgetPasswordScreen
 import com.example.outdoor.feature.auth.presentation.LoginScreen
 import com.example.outdoor.feature.auth.presentation.RegisterScreen
-import com.example.outdoor.feature.home.presentation.HomeScreen
+import com.example.outdoor.feature.main.presentation.MainScreen
 import com.example.outdoor.ui.theme.OutdoorNearWhite
 import com.example.outdoor.ui.theme.OutdoorTheme
 
@@ -56,7 +56,7 @@ class MainActivity : ComponentActivity() {
                             onSendResetLink = { /* Handle reset link send */ },
                             onBackToLoginClick = { currentScreen = 2 }
                         )
-                        5 -> HomeScreen()
+                        5 -> MainScreen()
                     }
                 }
             }

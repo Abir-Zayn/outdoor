@@ -1,6 +1,7 @@
 package com.example.outdoor.feature.home.presentation.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -46,11 +47,16 @@ data class Hotel(
 @Composable
 fun HotelCard(
     hotel: Hotel,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onClick: (Hotel) -> Unit = {}
 ) {
     var isFavorite by remember { mutableStateOf(false) }
 
-    Column(modifier = modifier.width(200.dp)) {
+    Column(
+        modifier = modifier
+            .width(200.dp)
+            .clickable { onClick(hotel) }
+    ) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
