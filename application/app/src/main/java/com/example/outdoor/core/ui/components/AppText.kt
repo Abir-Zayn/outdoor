@@ -5,6 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import com.example.outdoor.core.ui.typography.AppTextStyle
 import com.example.outdoor.ui.theme.LightTextPrimary
 import com.example.outdoor.ui.theme.LightTextSecondary
@@ -48,13 +49,19 @@ object AppText {
     fun Label(
         text: String,
         modifier: Modifier = Modifier,
-        color: Color = LightTextPrimary
+        color: Color = LightTextPrimary,
+        maxLines: Int = Int.MAX_VALUE,
+        overflow: TextOverflow = TextOverflow.Clip,
+        softWrap: Boolean = true
     ) {
         Text(
             text = text,
             modifier = modifier,
             color = color,
-            style = AppTextStyle.LabelNormal
+            style = AppTextStyle.LabelNormal,
+            maxLines = maxLines,
+            overflow = overflow,
+            softWrap = softWrap
         )
     }
 

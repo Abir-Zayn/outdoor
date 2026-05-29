@@ -17,19 +17,24 @@ import com.example.outdoor.feature.chat.presentation.ChatScreen
 import com.example.outdoor.feature.detailed.presentation.HotelDetailedScreen
 import com.example.outdoor.feature.home.presentation.HomeScreen
 import com.example.outdoor.feature.profile.presentation.ProfileScreen
+import com.example.outdoor.feature.roomselection.presentation.RoomSelectionScreen
 
 @Composable
 fun MainScreen() {
     var selectedTab by remember { mutableIntStateOf(0) }
     var showHotelDetail by remember { mutableStateOf(false) }
+    var showRoomSelection by remember { mutableStateOf(false) }
 
     Box(modifier = Modifier.fillMaxSize()) {
-        if (showHotelDetail) {
-            HotelDetailedScreen(
-                onBackClick = { showHotelDetail = false }
+        when {
+            showRoomSelection -> RoomSelectionScreen(
+                onCloseClick = { showRoomSelection = false }
             )
-        } else {
-            when (selectedTab) {
+            showHotelDetail -> HotelDetailedScreen(
+                onBackClick = { showHotelDetail = false },
+                onSelectRoomClick = { showRoomSelection = true }
+            )
+            else -> when (selectedTab) {
                 0 -> HomeScreen(
                     navBarPadding = 96.dp,
                     onHotelClick = { showHotelDetail = true }
@@ -40,7 +45,7 @@ fun MainScreen() {
             }
         }
 
-        if (!showHotelDetail) {
+        if (!showHotelDetail && !showRoomSelection) {
             BottomNavBar(
                 selectedIndex = selectedTab,
                 onItemSelected = { selectedTab = it },
