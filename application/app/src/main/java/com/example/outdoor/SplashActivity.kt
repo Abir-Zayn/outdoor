@@ -33,7 +33,7 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import com.caverock.androidsvg.SVGImageView
 import com.example.outdoor.ui.theme.IBMPlexSerif
-import com.example.outdoor.ui.theme.OutdoorBlue
+import com.example.outdoor.ui.theme.LightPrimary
 import com.example.outdoor.ui.theme.OutdoorTheme
 import kotlinx.coroutines.delay
 
@@ -93,7 +93,7 @@ fun SplashScreen(onTimeout: () -> Unit) {
                     ) {
                         Text(
                             text = char.toString(),
-                            color = OutdoorBlue,
+                            color = LightPrimary,
                             fontSize = 34.sp,
                             fontWeight = FontWeight.Medium,
                             fontFamily = IBMPlexSerif,

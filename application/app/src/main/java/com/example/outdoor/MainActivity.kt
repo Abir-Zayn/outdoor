@@ -16,7 +16,7 @@ import com.example.outdoor.feature.auth.presentation.ForgetPasswordScreen
 import com.example.outdoor.feature.auth.presentation.LoginScreen
 import com.example.outdoor.feature.auth.presentation.RegisterScreen
 import com.example.outdoor.feature.main.presentation.MainScreen
-import com.example.outdoor.ui.theme.OutdoorNearWhite
+import com.example.outdoor.ui.theme.LightBackground
 import com.example.outdoor.ui.theme.OutdoorTheme
 
 class MainActivity : ComponentActivity() {
@@ -27,7 +27,7 @@ class MainActivity : ComponentActivity() {
             OutdoorTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = OutdoorNearWhite
+                    color = LightBackground
                 ) {
                     var currentScreen by remember { mutableIntStateOf(0) }
 

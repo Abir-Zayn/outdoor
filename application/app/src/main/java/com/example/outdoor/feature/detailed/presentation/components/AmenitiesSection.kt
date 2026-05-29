@@ -27,9 +27,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 import com.example.outdoor.core.ui.components.AppText
-import com.example.outdoor.ui.theme.OutdoorBlack
-import com.example.outdoor.ui.theme.OutdoorBlue
-import com.example.outdoor.ui.theme.OutdoorNearWhite
+import com.example.outdoor.ui.theme.LightTextPrimary
+import com.example.outdoor.ui.theme.LightPrimary
+import com.example.outdoor.ui.theme.LightBackground
 
 private const val CollapsedAmenityCount = 4
 
@@ -59,8 +59,8 @@ fun AmenitiesSection(
                 AmenityTile(
                     icon = Icons.Filled.KeyboardArrowUp,
                     text = "Show less",
-                    iconTint = OutdoorBlue,
-                    textColor = OutdoorBlue,
+                    iconTint = LightPrimary,
+                    textColor = LightPrimary,
                     modifier = Modifier.clickable { isExpanded = false }
                 )
             }
@@ -84,8 +84,8 @@ fun AmenitiesSection(
                     AmenityTile(
                         icon = Icons.Filled.CheckCircle,
                         text = "+$hiddenCount more",
-                        iconTint = OutdoorBlue,
-                        textColor = OutdoorBlue,
+                        iconTint = LightPrimary,
+                        textColor = LightPrimary,
                         modifier = Modifier.clickable { isExpanded = true }
                     )
                 }
@@ -99,13 +99,13 @@ fun AmenityTile(
     icon: ImageVector,
     text: String,
     modifier: Modifier = Modifier,
-    iconTint: Color = OutdoorBlue,
-    textColor: Color = OutdoorBlack
+    iconTint: Color = LightPrimary,
+    textColor: Color = LightTextPrimary
 ) {
     Surface(
         modifier = modifier,
         shape = RoundedCornerShape(14.dp),
-        color = OutdoorNearWhite
+        color = LightBackground
     ) {
         Row(
             modifier = Modifier.padding(horizontal = 12.dp, vertical = 10.dp),

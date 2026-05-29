@@ -6,9 +6,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import com.example.outdoor.core.ui.typography.AppTextStyle
-import com.example.outdoor.ui.theme.OutdoorBlack
-import com.example.outdoor.ui.theme.OutdoorGray
-import com.example.outdoor.ui.theme.OutdoorOrange
+import com.example.outdoor.ui.theme.LightTextPrimary
+import com.example.outdoor.ui.theme.LightTextSecondary
+import com.example.outdoor.ui.theme.LightSecondary
 
 object AppText {
 
@@ -16,7 +16,7 @@ object AppText {
     fun Headline(
         text: String,
         modifier: Modifier = Modifier,
-        color: Color = OutdoorBlack,
+        color: Color = LightTextPrimary,
         textAlign: TextAlign? = null
     ) {
         Text(
@@ -32,7 +32,7 @@ object AppText {
     fun Body(
         text: String,
         modifier: Modifier = Modifier,
-        color: Color = OutdoorGray,
+        color: Color = LightTextSecondary,
         textAlign: TextAlign? = null
     ) {
         Text(
@@ -48,7 +48,7 @@ object AppText {
     fun Label(
         text: String,
         modifier: Modifier = Modifier,
-        color: Color = OutdoorBlack
+        color: Color = LightTextPrimary
     ) {
         Text(
             text = text,
@@ -62,7 +62,7 @@ object AppText {
     fun LabelAccent(
         text: String,
         modifier: Modifier = Modifier,
-        color: Color = OutdoorOrange
+        color: Color = LightSecondary
     ) {
         Text(
             text = text,
@@ -104,7 +104,7 @@ object AppText {
     fun SubHeadline(
         text: String,
         modifier: Modifier = Modifier,
-        color: Color = OutdoorBlack
+        color: Color = LightTextPrimary
     ) {
         Text(
             text = text,
@@ -118,7 +118,7 @@ object AppText {
     fun CardTitle(
         text: String,
         modifier: Modifier = Modifier,
-        color: Color = OutdoorBlack
+        color: Color = LightTextPrimary
     ) {
         Text(
             text = text,

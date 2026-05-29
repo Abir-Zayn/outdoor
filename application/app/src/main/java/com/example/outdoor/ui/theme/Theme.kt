@@ -6,14 +6,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
 private val OutdoorColorScheme = lightColorScheme(
-    primary = OutdoorBlue,
-    secondary = OutdoorGold,
-    background = OutdoorNearWhite,
-    surface = OutdoorNearWhite,
+    primary = LightPrimary,
+    secondary = LightSecondary,
+    background = LightBackground,
+    surface = LightBackground,
     onPrimary = Color.White,
-    onSecondary = OutdoorBlack,
-    onBackground = OutdoorBlack,
-    onSurface = OutdoorBlack,
+    onSecondary = LightTextPrimary,
+    onBackground = LightTextPrimary,
+    onSurface = LightTextPrimary,
 )
 
 @Composable

@@ -39,9 +39,9 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.example.outdoor.core.ui.typography.AppTextStyle
-import com.example.outdoor.ui.theme.OutdoorBlack
-import com.example.outdoor.ui.theme.OutdoorGray
-import com.example.outdoor.ui.theme.OutdoorLightGray
+import com.example.outdoor.ui.theme.LightTextPrimary
+import com.example.outdoor.ui.theme.LightTextSecondary
+import com.example.outdoor.ui.theme.LightSecondaryBackground
 
 private data class NavItem(val icon: ImageVector, val label: String)
 
@@ -107,7 +107,7 @@ private fun RowScope.NavBarItem(
         modifier = Modifier
             .weight(weight)
             .clip(RoundedCornerShape(24.dp))
-            .background(if (isSelected) OutdoorLightGray else Color.Transparent)
+            .background(if (isSelected) LightSecondaryBackground else Color.Transparent)
             .clickable(
                 interactionSource = interactionSource,
                 indication = null,
@@ -129,7 +129,7 @@ private fun RowScope.NavBarItem(
             Icon(
                 imageVector = item.icon,
                 contentDescription = item.label,
-                tint = if (isSelected) OutdoorBlack else OutdoorGray,
+                tint = if (isSelected) LightTextPrimary else LightTextSecondary,
                 modifier = Modifier.size(22.dp)
             )
             AnimatedVisibility(
@@ -140,7 +140,7 @@ private fun RowScope.NavBarItem(
                 Text(
                     text = item.label,
                     style = AppTextStyle.LabelSemiBold,
-                    color = OutdoorBlack,
+                    color = LightTextPrimary,
                     maxLines = 1,
                     overflow = TextOverflow.Clip
                 )

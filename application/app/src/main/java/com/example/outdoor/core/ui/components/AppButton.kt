@@ -14,14 +14,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.example.outdoor.ui.theme.OutdoorBlue
+import com.example.outdoor.ui.theme.LightPrimary
 
 @Composable
 fun AppButton(
     text: String,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
-    containerColor: Color = OutdoorBlue,
+    containerColor: Color = LightPrimary,
     textColor: Color = Color.White,
     leadingIcon: @Composable (() -> Unit)? = null
 ) {

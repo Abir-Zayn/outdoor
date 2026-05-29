@@ -18,7 +18,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import com.example.outdoor.core.ui.components.AppText
-import com.example.outdoor.ui.theme.OutdoorBlue
+import com.example.outdoor.ui.theme.LightPrimary
 
 @Composable
 fun HeroImage(modifier: Modifier = Modifier) {
@@ -41,7 +41,7 @@ fun HeroImage(modifier: Modifier = Modifier) {
                 .align(Alignment.TopEnd)
                 .padding(top = 76.dp, end = 18.dp)
                 .clip(RoundedCornerShape(50))
-                .background(OutdoorBlue)
+                .background(LightPrimary)
                 .padding(horizontal = 12.dp, vertical = 6.dp)
         ) {
             AppText.Badge(text = "#Luxury")

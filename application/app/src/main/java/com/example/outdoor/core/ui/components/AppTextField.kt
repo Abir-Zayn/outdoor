@@ -13,10 +13,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import com.example.outdoor.core.ui.typography.AppTextStyle
-import com.example.outdoor.ui.theme.OutdoorBlack
-import com.example.outdoor.ui.theme.OutdoorBlue
-import com.example.outdoor.ui.theme.OutdoorGray
-import com.example.outdoor.ui.theme.OutdoorNearWhite
+import com.example.outdoor.ui.theme.LightTextPrimary
+import com.example.outdoor.ui.theme.LightPrimary
+import com.example.outdoor.ui.theme.LightTextSecondary
+import com.example.outdoor.ui.theme.LightBackground
 
 @Composable
 fun AppTextField(
@@ -28,9 +28,9 @@ fun AppTextField(
     isError: Boolean = false,
     trailingIcon: @Composable (() -> Unit)? = null,
     leadingIcon: @Composable (() -> Unit)? = null,
-    containerColor: Color = OutdoorNearWhite,
-    textColor: Color = OutdoorBlack,
-    placeholderColor: Color = OutdoorGray
+    containerColor: Color = LightBackground,
+    textColor: Color = LightTextPrimary,
+    placeholderColor: Color = LightTextSecondary
 ) {
     TextField(
         value = value,
@@ -57,7 +57,7 @@ fun AppTextField(
             unfocusedIndicatorColor = Color.Transparent,
             disabledIndicatorColor = Color.Transparent,
             errorIndicatorColor = Color.Transparent,
-            cursorColor = OutdoorBlue,
+            cursorColor = LightPrimary,
             focusedTextColor = textColor,
             unfocusedTextColor = textColor
         )

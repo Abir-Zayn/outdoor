@@ -18,7 +18,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.outdoor.ui.theme.OutdoorLightGray
+import com.example.outdoor.ui.theme.LightSecondaryBackground
 
 @Composable
 fun SocialIconButton(
@@ -61,7 +61,7 @@ fun GoogleIcon(modifier: Modifier = Modifier) {
         modifier = modifier
             .size(44.dp)
             .background(Color.White, shape = CircleShape)
-            .border(1.dp, OutdoorLightGray, CircleShape),
+            .border(1.dp, LightSecondaryBackground, CircleShape),
         contentAlignment = Alignment.Center
     ) {
         Canvas(modifier = Modifier.size(20.dp)) {

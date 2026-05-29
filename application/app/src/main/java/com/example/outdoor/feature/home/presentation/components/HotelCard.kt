@@ -32,9 +32,9 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.outdoor.core.ui.components.AppText
-import com.example.outdoor.ui.theme.OutdoorBlack
+import com.example.outdoor.ui.theme.LightTextPrimary
 import com.example.outdoor.ui.theme.OutdoorGold
-import com.example.outdoor.ui.theme.OutdoorGray
+import com.example.outdoor.ui.theme.LightTextSecondary
 
 data class Hotel(
     val id: Int,
@@ -102,7 +102,7 @@ fun HotelCard(
                 Icon(
                     imageVector = if (isFavorite) Icons.Filled.Favorite else Icons.Filled.FavoriteBorder,
                     contentDescription = if (isFavorite) "Remove from favorites" else "Add to favorites",
-                    tint = if (isFavorite) Color.Red else OutdoorGray,
+                    tint = if (isFavorite) Color.Red else LightTextSecondary,
                     modifier = Modifier.size(15.dp)
                 )
             }
@@ -110,10 +110,10 @@ fun HotelCard(
 
         Spacer(modifier = Modifier.height(8.dp))
 
-        AppText.CardTitle(text = hotel.name, color = OutdoorBlack)
+        AppText.CardTitle(text = hotel.name, color = LightTextPrimary)
 
         Spacer(modifier = Modifier.height(2.dp))
 
-        AppText.Body(text = "From $${hotel.pricePerNight} / nights", color = OutdoorGray)
+        AppText.Body(text = "From $${hotel.pricePerNight} / nights", color = LightTextSecondary)
     }
 }

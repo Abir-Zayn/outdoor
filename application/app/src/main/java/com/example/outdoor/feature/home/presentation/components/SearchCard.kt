@@ -17,7 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.outdoor.core.ui.components.AppButton
 import com.example.outdoor.core.ui.components.AppTextField
-import com.example.outdoor.ui.theme.OutdoorBlue
+import com.example.outdoor.ui.theme.LightPrimary
 
 private val fieldContainerColor = Color.White.copy(alpha = 0.10f)
 private val fieldPlaceholderColor = Color.White.copy(alpha = 0.70f)
@@ -98,12 +98,12 @@ fun SearchCard(
             text = "Find",
             onClick = onFindClick,
             containerColor = Color.White,
-            textColor = OutdoorBlue,
+            textColor = LightPrimary,
             leadingIcon = {
                 Icon(
                     imageVector = Icons.Filled.Search,
                     contentDescription = null,
-                    tint = OutdoorBlue,
+                    tint = LightPrimary,
                     modifier = Modifier.size(20.dp)
                 )
             }

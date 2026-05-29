@@ -6,13 +6,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.unit.dp
-import com.example.outdoor.ui.theme.OutdoorGray
+import com.example.outdoor.ui.theme.LightTextSecondary
 
 @Composable
 fun PasswordVisibilityIcon(isVisible: Boolean, modifier: Modifier = Modifier) {
     Canvas(modifier = modifier.size(24.dp)) {
         val strokeWidth = 2.dp.toPx()
-        val color = OutdoorGray
+        val color = LightTextSecondary
 
         if (isVisible) {
             // Draw open eye arc

@@ -45,11 +45,11 @@ import com.example.outdoor.core.ui.components.PasswordVisibilityIcon
 import com.example.outdoor.core.ui.components.SocialIconButton
 import com.example.outdoor.core.ui.typography.AppTextStyle
 import com.example.outdoor.core.util.isValidEmail
-import com.example.outdoor.ui.theme.OutdoorBlack
-import com.example.outdoor.ui.theme.OutdoorBlue
-import com.example.outdoor.ui.theme.OutdoorGray
-import com.example.outdoor.ui.theme.OutdoorLightGray
-import com.example.outdoor.ui.theme.OutdoorNearWhite
+import com.example.outdoor.ui.theme.LightTextPrimary
+import com.example.outdoor.ui.theme.LightPrimary
+import com.example.outdoor.ui.theme.LightTextSecondary
+import com.example.outdoor.ui.theme.LightSecondaryBackground
+import com.example.outdoor.ui.theme.LightBackground
 import com.example.outdoor.ui.theme.OutdoorTheme
 
 data class RegisterState(
@@ -85,7 +85,7 @@ fun RegisterScreen(
                             Brush.verticalGradient(
                                 colors = listOf(
                                     Color(0xFF78BEFF),
-                                    OutdoorBlue
+                                    LightPrimary
                                 )
                             )
                         )
@@ -113,7 +113,7 @@ fun RegisterScreen(
                     modifier = Modifier
                         .weight(1.2f)
                         .fillMaxHeight()
-                        .background(OutdoorNearWhite)
+                        .background(LightBackground)
                         .padding(24.dp),
                     contentAlignment = Alignment.Center
                 ) {
@@ -144,7 +144,7 @@ fun RegisterScreen(
                         Brush.verticalGradient(
                             colors = listOf(
                                 Color(0xFF78BEFF),
-                                OutdoorBlue
+                                LightPrimary
                             )
                         )
                     )
@@ -311,7 +311,7 @@ private fun RegisterFormContent(
                 else -> onRegisterSuccess()
             }
         },
-        containerColor = OutdoorBlack
+        containerColor = LightTextPrimary
     )
 
     Spacer(modifier = Modifier.height(4.dp))
@@ -321,9 +321,9 @@ private fun RegisterFormContent(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(12.dp)
     ) {
-        HorizontalDivider(modifier = Modifier.weight(1f), color = OutdoorLightGray)
-        AppText.Body(text = "Or Sign up With", color = OutdoorGray)
-        HorizontalDivider(modifier = Modifier.weight(1f), color = OutdoorLightGray)
+        HorizontalDivider(modifier = Modifier.weight(1f), color = LightSecondaryBackground)
+        AppText.Body(text = "Or Sign up With", color = LightTextSecondary)
+        HorizontalDivider(modifier = Modifier.weight(1f), color = LightSecondaryBackground)
     }
 
     Row(
@@ -347,10 +347,10 @@ private fun RegisterFormContent(
         horizontalArrangement = Arrangement.spacedBy(4.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        AppText.Body(text = "Already have an account?", color = OutdoorGray)
+        AppText.Body(text = "Already have an account?", color = LightTextSecondary)
         Text(
             text = "Sign in",
-            color = OutdoorBlue,
+            color = LightPrimary,
             style = AppTextStyle.LabelSemiBold,
             modifier = Modifier.clickable { onSignInClick() }
         )

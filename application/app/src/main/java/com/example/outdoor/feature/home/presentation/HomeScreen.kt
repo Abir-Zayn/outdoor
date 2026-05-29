@@ -32,7 +32,7 @@ import com.example.outdoor.feature.home.presentation.components.AppTopBar
 import com.example.outdoor.feature.home.presentation.components.Hotel
 import com.example.outdoor.feature.home.presentation.components.HotelCard
 import com.example.outdoor.feature.home.presentation.components.SearchCard
-import com.example.outdoor.ui.theme.OutdoorBlue
+import com.example.outdoor.ui.theme.LightPrimary
 import com.example.outdoor.ui.theme.OutdoorTheme
 
 private val mostPopularHotels = listOf(
@@ -69,7 +69,7 @@ fun HomeScreen(
                 .fillMaxWidth()
                 .background(
                     Brush.verticalGradient(
-                        colors = listOf(Color(0xFF589EFF), OutdoorBlue)
+                        colors = listOf(Color(0xFF589EFF), LightPrimary)
                     )
                 )
                 .statusBarsPadding()

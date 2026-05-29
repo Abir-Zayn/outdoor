@@ -18,8 +18,8 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.outdoor.ui.theme.OutdoorBlack
-import com.example.outdoor.ui.theme.OutdoorLightGray
+import com.example.outdoor.ui.theme.LightTextPrimary
+import com.example.outdoor.ui.theme.LightSecondaryBackground
 
 @Composable
 fun OnboardNavigation(
@@ -36,8 +36,8 @@ fun OnboardNavigation(
     ) {
         NavCircleButton(
             label = "←",
-            backgroundColor = OutdoorLightGray,
-            contentColor = OutdoorBlack,
+            backgroundColor = LightSecondaryBackground,
+            contentColor = LightTextPrimary,
             onClick = onBack
         )
 
@@ -45,7 +45,7 @@ fun OnboardNavigation(
 
         NavCircleButton(
             label = "→",
-            backgroundColor = OutdoorBlack,
+            backgroundColor = LightTextPrimary,
             contentColor = Color.White,
             onClick = onNext
         )
@@ -84,7 +84,7 @@ private fun PageDots(currentPage: Int, totalPages: Int) {
                 modifier = Modifier
                     .size(if (isActive) 10.dp else 8.dp)
                     .clip(CircleShape)
-                    .background(if (isActive) OutdoorBlack else OutdoorLightGray)
+                    .background(if (isActive) LightTextPrimary else LightSecondaryBackground)
             )
         }
     }

@@ -32,9 +32,9 @@ import com.example.outdoor.core.ui.components.AppText
 import com.example.outdoor.core.ui.typography.AppTextStyle
 import com.example.outdoor.feature.onboard.presentation.components.HeroImage
 import com.example.outdoor.feature.onboard.presentation.components.OnboardActions
-import com.example.outdoor.ui.theme.OutdoorBlack
-import com.example.outdoor.ui.theme.OutdoorNearWhite
-import com.example.outdoor.ui.theme.OutdoorOrange
+import com.example.outdoor.ui.theme.LightTextPrimary
+import com.example.outdoor.ui.theme.LightBackground
+import com.example.outdoor.ui.theme.LightSecondary
 import com.example.outdoor.ui.theme.OutdoorTheme
 
 @Composable
@@ -45,7 +45,7 @@ fun OnboardScreen(
     BoxWithConstraints(
         modifier = Modifier
             .fillMaxSize()
-            .background(OutdoorNearWhite)
+            .background(LightBackground)
     ) {
         val isTabletOrLandscape = maxWidth > 600.dp
         val bodyToActionGap = (40f * LocalDensity.current.fontScale).dp
@@ -74,18 +74,18 @@ fun OnboardScreen(
                 ) {
                     Text(
                         text = buildAnnotatedString {
-                            withStyle(AppTextStyle.HeadlineLarge.toSpanStyle().copy(color = OutdoorBlack)) {
+                            withStyle(AppTextStyle.HeadlineLarge.toSpanStyle().copy(color = LightTextPrimary)) {
                                 append("Find your ")
                             }
                             withStyle(
                                 AppTextStyle.HeadlineLarge.toSpanStyle().copy(
-                                    color = OutdoorOrange,
+                                    color = LightSecondary,
                                     fontStyle = FontStyle.Normal
                                 )
                             ) {
                                 append("perfect stay\nanywhere")
                             }
-                            withStyle(AppTextStyle.HeadlineLarge.toSpanStyle().copy(color = OutdoorBlack)) {
+                            withStyle(AppTextStyle.HeadlineLarge.toSpanStyle().copy(color = LightTextPrimary)) {
                                 append(" in the world")
                             }
                         },
@@ -136,18 +136,18 @@ fun OnboardScreen(
 
                     Text(
                         text = buildAnnotatedString {
-                            withStyle(AppTextStyle.HeadlineLarge.toSpanStyle().copy(color = OutdoorBlack)) {
+                            withStyle(AppTextStyle.HeadlineLarge.toSpanStyle().copy(color = LightTextPrimary)) {
                                 append("Find your ")
                             }
                             withStyle(
                                 AppTextStyle.HeadlineLarge.toSpanStyle().copy(
-                                    color = OutdoorOrange,
+                                    color = LightSecondary,
                                     fontStyle = FontStyle.Normal
                                 )
                             ) {
                                 append("perfect stay\nanywhere")
                             }
-                            withStyle(AppTextStyle.HeadlineLarge.toSpanStyle().copy(color = OutdoorBlack)) {
+                            withStyle(AppTextStyle.HeadlineLarge.toSpanStyle().copy(color = LightTextPrimary)) {
                                 append(" in the world")
                             }
                         },

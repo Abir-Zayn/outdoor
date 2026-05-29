@@ -50,12 +50,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.outdoor.core.ui.components.AppText
 import com.example.outdoor.feature.detailed.presentation.components.AmenitiesSection
-import com.example.outdoor.ui.theme.OutdoorBlack
-import com.example.outdoor.ui.theme.OutdoorBlue
+import com.example.outdoor.feature.detailed.presentation.components.SelectRoomComponent
+import com.example.outdoor.ui.theme.LightTextPrimary
+import com.example.outdoor.ui.theme.LightPrimary
 import com.example.outdoor.ui.theme.OutdoorGold
-import com.example.outdoor.ui.theme.OutdoorGray
-import com.example.outdoor.ui.theme.OutdoorNearWhite
-import com.example.outdoor.ui.theme.OutdoorOrange
+import com.example.outdoor.ui.theme.LightTextSecondary
+import com.example.outdoor.ui.theme.LightBackground
+import com.example.outdoor.ui.theme.LightSecondary
 import com.example.outdoor.ui.theme.OutdoorTheme
 
 data class HotelDetailUiModel(
@@ -72,7 +73,8 @@ data class HotelDetailUiModel(
     val housePolicies: List<String>,
     val childPolicies: List<String>,
     val petPolicies: List<String>,
-    val digitalPaymentOptions: List<String>
+    val digitalPaymentOptions: List<String>,
+    val pricePerNight: Int
 )
 
 data class RoomImageUiModel(
@@ -98,84 +100,98 @@ private val sampleHotelDetail = HotelDetailUiModel(
     housePolicies = listOf("Photo ID required at check-in", "No smoking inside rooms", "Quiet hours after 10:00 PM"),
     childPolicies = listOf("Children are welcome", "Extra bed available on request", "Kids under 6 stay free with parents"),
     petPolicies = listOf("Pets are not allowed", "Service animals accepted with prior notice"),
-    digitalPaymentOptions = listOf("Visa", "Mastercard", "Mobile wallet", "Online banking")
+    digitalPaymentOptions = listOf("Visa", "Mastercard", "Mobile wallet", "Online banking"),
+    pricePerNight = 1000
 )
 
 @Composable
 fun HotelDetailedScreen(
     hotel: HotelDetailUiModel = sampleHotelDetail,
     onBackClick: () -> Unit = {},
-    onShareClick: () -> Unit = {}
+    onShareClick: () -> Unit = {},
+    onSelectRoomClick: () -> Unit = {}
 ) {
     var isFavorite by remember { mutableStateOf(false) }
 
-    LazyColumn(
+    Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White),
-        contentPadding = PaddingValues(bottom = 32.dp)
+            .background(Color.White)
     ) {
-        item {
-            HotelImageCarousel(
-                images = hotel.roomImages,
-                isFavorite = isFavorite,
-                onFavoriteClick = { isFavorite = !isFavorite },
-                onBackClick = onBackClick,
-                onShareClick = onShareClick
-            )
-        }
-
-        item {
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 20.dp, vertical = 22.dp),
-                verticalArrangement = Arrangement.spacedBy(22.dp)
-            ) {
-                HotelHeader(hotel = hotel)
-
-                DetailSection(title = "Amenities") {
-                    AmenitiesSection(amenities = hotel.amenities)
-                }
-
-                CheckTimesRow(
-                    checkInTime = hotel.checkInTime,
-                    checkOutTime = hotel.checkOutTime
+        LazyColumn(
+            modifier = Modifier.fillMaxSize(),
+            contentPadding = PaddingValues(bottom = 122.dp)
+        ) {
+            item {
+                HotelImageCarousel(
+                    images = hotel.roomImages,
+                    isFavorite = isFavorite,
+                    onFavoriteClick = { isFavorite = !isFavorite },
+                    onBackClick = onBackClick,
+                    onShareClick = onShareClick
                 )
+            }
 
-                DetailSection(title = "Description") {
-                    AppText.Body(text = hotel.description, color = OutdoorGray)
-                }
+            item {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 20.dp, vertical = 22.dp),
+                    verticalArrangement = Arrangement.spacedBy(22.dp)
+                ) {
+                    HotelHeader(hotel = hotel)
 
-                DetailSection(title = "Location") {
-                    MapPlaceholder(location = hotel.location)
-                }
+                    DetailSection(title = "Amenities") {
+                        AmenitiesSection(amenities = hotel.amenities)
+                    }
 
-                DetailSection(title = "Nearby Activities") {
-                    BulletList(items = hotel.nearbyActivities, icon = Icons.Filled.LocationOn)
-                }
+                    CheckTimesRow(
+                        checkInTime = hotel.checkInTime,
+                        checkOutTime = hotel.checkOutTime
+                    )
 
-                DetailSection(title = "House Policy") {
-                    BulletList(items = hotel.housePolicies, icon = Icons.Filled.Info)
-                }
+                    DetailSection(title = "Description") {
+                        AppText.Body(text = hotel.description, color = LightTextSecondary)
+                    }
 
-                DetailSection(title = "Child Policy") {
-                    BulletList(items = hotel.childPolicies, icon = Icons.Filled.CheckCircle)
-                }
+                    DetailSection(title = "Location") {
+                        MapPlaceholder(location = hotel.location)
+                    }
 
-                DetailSection(title = "Pet Policy") {
-                    BulletList(items = hotel.petPolicies, icon = Icons.Filled.Info)
-                }
+                    DetailSection(title = "Nearby Activities") {
+                        BulletList(items = hotel.nearbyActivities, icon = Icons.Filled.LocationOn)
+                    }
 
-                DetailSection(title = "What People Say about this place?") {
-                    ReviewSummary(hotel = hotel)
-                }
+                    DetailSection(title = "House Policy") {
+                        BulletList(items = hotel.housePolicies, icon = Icons.Filled.Info)
+                    }
 
-                DetailSection(title = "Property accepts") {
-                    BulletList(items = hotel.digitalPaymentOptions, icon = Icons.Filled.CreditCard)
+                    DetailSection(title = "Child Policy") {
+                        BulletList(items = hotel.childPolicies, icon = Icons.Filled.CheckCircle)
+                    }
+
+                    DetailSection(title = "Pet Policy") {
+                        BulletList(items = hotel.petPolicies, icon = Icons.Filled.Info)
+                    }
+
+                    DetailSection(title = "What People Say about this place?") {
+                        ReviewSummary(hotel = hotel)
+                    }
+
+                    DetailSection(title = "Property accepts") {
+                        BulletList(items = hotel.digitalPaymentOptions, icon = Icons.Filled.CreditCard)
+                    }
                 }
             }
         }
+
+        SelectRoomComponent(
+            priceText = "BDT ${hotel.pricePerNight}tk",
+            nightText = "for 1 night",
+            onSelectRoomClick = onSelectRoomClick,
+            modifier = Modifier
+                .align(Alignment.BottomCenter)
+        )
     }
 }
 
@@ -208,7 +224,7 @@ private fun HotelImageCarousel(
                             colors = listOf(
                                 image.accentColor.copy(alpha = 0.85f),
                                 image.accentColor,
-                                OutdoorBlack.copy(alpha = 0.78f)
+                                LightTextPrimary.copy(alpha = 0.78f)
                             )
                         )
                     )
@@ -246,7 +262,7 @@ private fun HotelImageCarousel(
                 ImageActionButton(
                     icon = if (isFavorite) Icons.Filled.Favorite else Icons.Filled.FavoriteBorder,
                     contentDescription = if (isFavorite) "Remove from favorites" else "Add to favorites",
-                    tint = if (isFavorite) OutdoorOrange else OutdoorBlack,
+                    tint = if (isFavorite) LightSecondary else LightTextPrimary,
                     onClick = onFavoriteClick
                 )
             }
@@ -279,7 +295,7 @@ private fun ImageActionButton(
     icon: ImageVector,
     contentDescription: String,
     onClick: () -> Unit,
-    tint: Color = OutdoorBlack
+    tint: Color = LightTextPrimary
 ) {
     IconButton(
         onClick = onClick,
@@ -299,7 +315,7 @@ private fun ImageActionButton(
 @Composable
 private fun HotelHeader(hotel: HotelDetailUiModel) {
     Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-        AppText.Headline(text = hotel.name, color = OutdoorBlack)
+        AppText.Headline(text = hotel.name, color = LightTextPrimary)
         Row(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically
@@ -307,13 +323,13 @@ private fun HotelHeader(hotel: HotelDetailUiModel) {
             Icon(
                 imageVector = Icons.Filled.LocationOn,
                 contentDescription = null,
-                tint = OutdoorBlue,
+                tint = LightPrimary,
                 modifier = Modifier.size(18.dp)
             )
             Spacer(modifier = Modifier.width(5.dp))
             AppText.Body(
                 text = hotel.location,
-                color = OutdoorGray,
+                color = LightTextSecondary,
                 modifier = Modifier.weight(1f)
             )
             Spacer(modifier = Modifier.width(8.dp))
@@ -324,9 +340,9 @@ private fun HotelHeader(hotel: HotelDetailUiModel) {
                 modifier = Modifier.size(18.dp)
             )
             Spacer(modifier = Modifier.width(4.dp))
-            AppText.LabelAccent(text = hotel.reviewAverage.toString(), color = OutdoorBlack)
+            AppText.LabelAccent(text = hotel.reviewAverage.toString(), color = LightTextPrimary)
             Spacer(modifier = Modifier.width(4.dp))
-            AppText.Body(text = "(${hotel.totalReviews})", color = OutdoorGray)
+            AppText.Body(text = "(${hotel.totalReviews})", color = LightTextSecondary)
         }
     }
 }
@@ -383,12 +399,12 @@ private fun TimeTile(
             Icon(
                 imageVector = Icons.Filled.AccessTime,
                 contentDescription = null,
-                tint = OutdoorBlue,
+                tint = LightPrimary,
                 modifier = Modifier.size(22.dp)
             )
             Column {
-                AppText.Body(text = title, color = OutdoorGray)
-                AppText.CardTitle(text = time, color = OutdoorBlack)
+                AppText.Body(text = title, color = LightTextSecondary)
+                AppText.CardTitle(text = time, color = LightTextPrimary)
             }
         }
     }
@@ -401,7 +417,7 @@ private fun MapPlaceholder(location: String) {
             .fillMaxWidth()
             .height(170.dp)
             .clip(RoundedCornerShape(18.dp))
-            .background(OutdoorNearWhite),
+            .background(LightBackground),
         contentAlignment = Alignment.Center
     ) {
         Column(
@@ -412,13 +428,13 @@ private fun MapPlaceholder(location: String) {
             Icon(
                 imageVector = Icons.Filled.Map,
                 contentDescription = null,
-                tint = OutdoorBlue,
+                tint = LightPrimary,
                 modifier = Modifier.size(34.dp)
             )
-            AppText.CardTitle(text = "Google Map location", color = OutdoorBlack)
+            AppText.CardTitle(text = "Google Map location", color = LightTextPrimary)
             AppText.Body(
                 text = location,
-                color = OutdoorGray,
+                color = LightTextSecondary,
                 textAlign = androidx.compose.ui.text.style.TextAlign.Center
             )
         }
@@ -439,14 +455,14 @@ private fun BulletList(
                 Icon(
                     imageVector = icon,
                     contentDescription = null,
-                    tint = OutdoorBlue,
+                    tint = LightPrimary,
                     modifier = Modifier
                         .padding(top = 2.dp)
                         .size(17.dp)
                 )
                 AppText.Body(
                     text = item,
-                    color = OutdoorGray,
+                    color = LightTextSecondary,
                     modifier = Modifier.weight(1f)
                 )
             }
@@ -458,7 +474,7 @@ private fun BulletList(
 private fun ReviewSummary(hotel: HotelDetailUiModel) {
     Surface(
         shape = RoundedCornerShape(18.dp),
-        color = OutdoorNearWhite
+        color = LightBackground
     ) {
         Row(
             modifier = Modifier
@@ -483,17 +499,17 @@ private fun ReviewSummary(hotel: HotelDetailUiModel) {
             Column(modifier = Modifier.weight(1f)) {
                 AppText.CardTitle(
                     text = "${hotel.reviewAverage} Excellent",
-                    color = OutdoorBlack
+                    color = LightTextPrimary
                 )
                 AppText.Body(
                     text = "Based on ${hotel.totalReviews} guest reviews",
-                    color = OutdoorGray,
+                    color = LightTextSecondary,
                     modifier = Modifier.fillMaxWidth()
                 )
             }
             AppText.LabelAccent(
                 text = "Reviews",
-                color = OutdoorBlue,
+                color = LightPrimary,
                 modifier = Modifier.padding(start = 8.dp)
             )
         }

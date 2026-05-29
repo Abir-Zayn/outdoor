@@ -36,10 +36,10 @@ import com.example.outdoor.core.ui.components.AppText
 import com.example.outdoor.core.ui.components.AppTextField
 import com.example.outdoor.core.ui.typography.AppTextStyle
 import com.example.outdoor.core.util.isValidEmail
-import com.example.outdoor.ui.theme.OutdoorBlack
-import com.example.outdoor.ui.theme.OutdoorBlue
-import com.example.outdoor.ui.theme.OutdoorGray
-import com.example.outdoor.ui.theme.OutdoorNearWhite
+import com.example.outdoor.ui.theme.LightTextPrimary
+import com.example.outdoor.ui.theme.LightPrimary
+import com.example.outdoor.ui.theme.LightTextSecondary
+import com.example.outdoor.ui.theme.LightBackground
 import com.example.outdoor.ui.theme.OutdoorTheme
 
 data class ForgetPasswordState(
@@ -67,7 +67,7 @@ fun ForgetPasswordScreen(
                             Brush.verticalGradient(
                                 colors = listOf(
                                     Color(0xFF78BEFF),
-                                    OutdoorBlue
+                                    LightPrimary
                                 )
                             )
                         )
@@ -95,7 +95,7 @@ fun ForgetPasswordScreen(
                     modifier = Modifier
                         .weight(1.2f)
                         .fillMaxHeight()
-                        .background(OutdoorNearWhite)
+                        .background(LightBackground)
                         .padding(24.dp),
                     contentAlignment = Alignment.Center
                 ) {
@@ -125,7 +125,7 @@ fun ForgetPasswordScreen(
                         Brush.verticalGradient(
                             colors = listOf(
                                 Color(0xFF78BEFF),
-                                OutdoorBlue
+                                LightPrimary
                             )
                         )
                     )
@@ -171,7 +171,7 @@ private fun ForgetPasswordFormContent(
     AppText.Body(
         text = "Enter the email you used when creating your account.",
         textAlign = TextAlign.Center,
-        color = OutdoorGray
+        color = LightTextSecondary
     )
 
     Spacer(modifier = Modifier.height(8.dp))
@@ -208,14 +208,14 @@ private fun ForgetPasswordFormContent(
                 else -> onSendResetLink(state.email.trim())
             }
         },
-        containerColor = OutdoorBlack
+        containerColor = LightTextPrimary
     )
 
     Spacer(modifier = Modifier.height(4.dp))
 
     Text(
         text = "Back to Login",
-        color = OutdoorBlue,
+        color = LightPrimary,
         style = AppTextStyle.LabelSemiBold,
         modifier = Modifier.clickable { onBackToLoginClick() }
     )

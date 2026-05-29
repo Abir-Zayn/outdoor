@@ -46,12 +46,11 @@ import com.example.outdoor.core.ui.components.GoogleIcon
 import com.example.outdoor.core.ui.components.PasswordVisibilityIcon
 import com.example.outdoor.core.ui.components.SocialIconButton
 import com.example.outdoor.core.ui.typography.AppTextStyle
-import com.example.outdoor.core.util.isValidEmail
-import com.example.outdoor.ui.theme.OutdoorBlack
-import com.example.outdoor.ui.theme.OutdoorBlue
-import com.example.outdoor.ui.theme.OutdoorGray
-import com.example.outdoor.ui.theme.OutdoorLightGray
-import com.example.outdoor.ui.theme.OutdoorNearWhite
+import com.example.outdoor.ui.theme.LightTextPrimary
+import com.example.outdoor.ui.theme.LightPrimary
+import com.example.outdoor.ui.theme.LightTextSecondary
+import com.example.outdoor.ui.theme.LightSecondaryBackground
+import com.example.outdoor.ui.theme.LightBackground
 import com.example.outdoor.ui.theme.OutdoorTheme
 
 /**
@@ -90,7 +89,7 @@ fun LoginScreen(
                             Brush.verticalGradient(
                                 colors = listOf(
                                     Color(0xFF589EFF),
-                                    OutdoorBlue
+                                    LightPrimary
                                 )
                             )
                         )
@@ -118,7 +117,7 @@ fun LoginScreen(
                     modifier = Modifier
                         .weight(1.2f)
                         .fillMaxHeight()
-                        .background(OutdoorNearWhite)
+                        .background(LightBackground)
                         .padding(24.dp),
                     contentAlignment = Alignment.Center
                 ) {
@@ -151,7 +150,7 @@ fun LoginScreen(
                         Brush.verticalGradient(
                             colors = listOf(
                                 Color(0xFF589EFF),
-                                OutdoorBlue
+                                LightPrimary
                             )
                         )
                     )
@@ -202,7 +201,7 @@ fun LoginFormContent(
     AppText.Body(
         text = "Enter your details below to log back into your account",
         textAlign = TextAlign.Center,
-        color = OutdoorGray
+        color = LightTextSecondary
     )
 
     Spacer(modifier = Modifier.height(8.dp))
@@ -271,16 +270,16 @@ fun LoginFormContent(
                 checked = state.rememberMe,
                 onCheckedChange = { onStateChange(state.copy(rememberMe = it)) },
                 colors = CheckboxDefaults.colors(
-                    checkedColor = OutdoorBlue,
-                    uncheckedColor = OutdoorGray
+                    checkedColor = LightPrimary,
+                    uncheckedColor = LightTextSecondary
                 )
             )
-            AppText.Label(text = "Remember me", color = OutdoorGray)
+            AppText.Label(text = "Remember me", color = LightTextSecondary)
         }
 
         Text(
             text = "Forgot password?",
-            color = OutdoorBlue,
+            color = LightPrimary,
             style = AppTextStyle.LabelSemiBold,
             modifier = Modifier.clickable { onForgotPasswordClick() }
         )
@@ -292,22 +291,10 @@ fun LoginFormContent(
     AppButton(
         text = "Log in",
         onClick = {
-            // Calling isValidEmail function to verify the user input before executing login
-            val isEmailValid = isValidEmail(state.email)
-
-            if (state.email.isEmpty()) {
-                onStateChange(state.copy(emailError = "Email cannot be empty"))
-            } else if (!isEmailValid) {
-                onStateChange(state.copy(emailError = "Invalid email format"))
-            } else if (state.password.isEmpty()) {
-                onStateChange(state.copy(passwordError = "Password cannot be empty"))
-            } else if (state.password.length < 6) {
-                onStateChange(state.copy(passwordError = "Password must be at least 6 characters"))
-            } else {
-                onLoginSuccess()
-            }
+            onStateChange(state.copy(emailError = null, passwordError = null))
+            onLoginSuccess()
         },
-        containerColor = OutdoorBlack
+        containerColor = LightTextPrimary
     )
 
     Spacer(modifier = Modifier.height(4.dp))
@@ -318,9 +305,9 @@ fun LoginFormContent(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(12.dp)
     ) {
-        HorizontalDivider(modifier = Modifier.weight(1f), color = OutdoorLightGray)
-        AppText.Body(text = "Or Log In With", color = OutdoorGray)
-        HorizontalDivider(modifier = Modifier.weight(1f), color = OutdoorLightGray)
+        HorizontalDivider(modifier = Modifier.weight(1f), color = LightSecondaryBackground)
+        AppText.Body(text = "Or Log In With", color = LightTextSecondary)
+        HorizontalDivider(modifier = Modifier.weight(1f), color = LightSecondaryBackground)
     }
 
     // Social buttons: Facebook, Google, Apple
@@ -346,10 +333,10 @@ fun LoginFormContent(
         horizontalArrangement = Arrangement.spacedBy(4.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        AppText.Body(text = "Don't have an account?", color = OutdoorGray)
+        AppText.Body(text = "Don't have an account?", color = LightTextSecondary)
         Text(
             text = "Sign Up",
-            color = OutdoorBlue,
+            color = LightPrimary,
             style = AppTextStyle.LabelSemiBold,
             modifier = Modifier.clickable { onSignUpClick() }
         )
