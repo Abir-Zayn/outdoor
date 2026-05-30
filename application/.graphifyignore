@@ -36,6 +36,7 @@ local.properties
 .idea/
 .claude/
 
+
 # ── OS noise ─────────────────────────────────────────────────────────────────
 .DS_Store
 Thumbs.db

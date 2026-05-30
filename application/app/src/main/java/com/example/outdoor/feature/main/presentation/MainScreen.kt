@@ -17,18 +17,36 @@ import com.example.outdoor.feature.chat.presentation.ChatScreen
 import com.example.outdoor.feature.detailed.presentation.HotelDetailedScreen
 import com.example.outdoor.feature.home.presentation.HomeScreen
 import com.example.outdoor.feature.profile.presentation.ProfileScreen
+import com.example.outdoor.feature.roomdetailed.presentation.RoomDetailedScreen
 import com.example.outdoor.feature.roomselection.presentation.RoomSelectionScreen
+import com.example.outdoor.feature.roomselection.widgets.RoomUiModel
 
 @Composable
 fun MainScreen() {
     var selectedTab by remember { mutableIntStateOf(0) }
     var showHotelDetail by remember { mutableStateOf(false) }
     var showRoomSelection by remember { mutableStateOf(false) }
+    var showRoomDetailed by remember { mutableStateOf(false) }
+    var selectedRoom by remember { mutableStateOf<RoomUiModel?>(null) }
+    var pendingDetailRoom by remember { mutableStateOf<RoomUiModel?>(null) }
 
     Box(modifier = Modifier.fillMaxSize()) {
         when {
+            showRoomDetailed -> RoomDetailedScreen(
+                onBackClick = { showRoomDetailed = false },
+                onSelectRoomClick = {
+                    selectedRoom = pendingDetailRoom
+                    showRoomDetailed = false
+                }
+            )
             showRoomSelection -> RoomSelectionScreen(
-                onCloseClick = { showRoomSelection = false }
+                selectedRoom = selectedRoom,
+                onCloseClick = { showRoomSelection = false },
+                onViewDetailsClick = { room ->
+                    pendingDetailRoom = room
+                    showRoomDetailed = true
+                },
+                onRemoveRoom = { selectedRoom = null }
             )
             showHotelDetail -> HotelDetailedScreen(
                 onBackClick = { showHotelDetail = false },
@@ -45,7 +63,7 @@ fun MainScreen() {
             }
         }
 
-        if (!showHotelDetail && !showRoomSelection) {
+        if (!showHotelDetail && !showRoomSelection && !showRoomDetailed) {
             BottomNavBar(
                 selectedIndex = selectedTab,
                 onItemSelected = { selectedTab = it },

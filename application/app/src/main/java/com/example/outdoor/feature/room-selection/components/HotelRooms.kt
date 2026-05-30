@@ -43,6 +43,7 @@ data class RoomUiModel(
     val bedSize: String,
     val guestCount: Int,
     val accentColor: Color = Color(0xFF5C8FB8),
+    val pricePerNight: Int = 0,
     val warning: String? = null,
     val smokingAllowed: Boolean = false,
     val seatsLeft: Int = 0
