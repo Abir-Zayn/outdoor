@@ -17,6 +17,7 @@ import com.example.outdoor.feature.chat.presentation.ChatScreen
 import com.example.outdoor.feature.detailed.presentation.HotelDetailedScreen
 import com.example.outdoor.feature.home.presentation.HomeScreen
 import com.example.outdoor.feature.profile.presentation.ProfileScreen
+import com.example.outdoor.feature.reservation.presentation.ReservationScreen
 import com.example.outdoor.feature.roomdetailed.presentation.RoomDetailedScreen
 import com.example.outdoor.feature.roomselection.presentation.RoomSelectionScreen
 import com.example.outdoor.feature.roomselection.widgets.RoomUiModel
@@ -27,11 +28,15 @@ fun MainScreen() {
     var showHotelDetail by remember { mutableStateOf(false) }
     var showRoomSelection by remember { mutableStateOf(false) }
     var showRoomDetailed by remember { mutableStateOf(false) }
+    var showReservation by remember { mutableStateOf(false) }
     var selectedRoom by remember { mutableStateOf<RoomUiModel?>(null) }
     var pendingDetailRoom by remember { mutableStateOf<RoomUiModel?>(null) }
 
     Box(modifier = Modifier.fillMaxSize()) {
         when {
+            showReservation -> ReservationScreen(
+                onBackClick = { showReservation = false }
+            )
             showRoomDetailed -> RoomDetailedScreen(
                 onBackClick = { showRoomDetailed = false },
                 onSelectRoomClick = {
@@ -46,7 +51,8 @@ fun MainScreen() {
                     pendingDetailRoom = room
                     showRoomDetailed = true
                 },
-                onRemoveRoom = { selectedRoom = null }
+                onRemoveRoom = { selectedRoom = null },
+                onBookClick = { showReservation = true }
             )
             showHotelDetail -> HotelDetailedScreen(
                 onBackClick = { showHotelDetail = false },
@@ -63,7 +69,7 @@ fun MainScreen() {
             }
         }
 
-        if (!showHotelDetail && !showRoomSelection && !showRoomDetailed) {
+        if (!showHotelDetail && !showRoomSelection && !showRoomDetailed && !showReservation) {
             BottomNavBar(
                 selectedIndex = selectedTab,
                 onItemSelected = { selectedTab = it },
